@@ -6,6 +6,6 @@ public class Task1 {
     public static void main(String[] args) {
         FunctionService functionService = new FunctionService();
         double value = 555;
-        functionService.runTaskOne(value);
+
     }
 }

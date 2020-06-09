@@ -13,13 +13,13 @@ public class FunctionService {
     private static final EnteredDataValidation dataValidation = new EnteredDataValidation();
     private static final PrintToConsole printToConsole = new PrintToConsole();
 
-    public double runTaskOne(double value) {
+    public double runTaskOne(double value) throws IncorrectDataException{
         double result = 0;
         try {
             if (!dataValidation.validateInteger(value) || !dataValidation.validateNotNull(value)) {
                 throw new IncorrectDataException("Incorrect data. Enter an integer");
             }
-            result = findRemainderOfDividingByTen(value);
+            result = calculateSquare(value % TEN) % TEN;
             printToConsole.printValue(result);
         } catch (IncorrectDataException e) {
             printToConsole.printMessage(e.getMessage());
@@ -93,11 +93,11 @@ public class FunctionService {
         }
     }
 
-    private double calculateHypotenuse(double axisX, double axisY) {
+    public double calculateHypotenuse(double axisX, double axisY) {
         return Math.hypot(axisX, axisY);
     }
 
-    private boolean isPerfect(int number) {
+    public boolean isPerfect(int number) {
         int sum = 0;
         for (int i = 1; i < number; i++) {
             if (number % i == 0) {
@@ -107,15 +107,11 @@ public class FunctionService {
         return sum == number;
     }
 
-    private boolean isEvenNumber(int number) {
+    public boolean isEvenNumber(int number) {
         return number % TWO == 0;
     }
 
-    private double findRemainderOfDividingByTen(double value) {
-        return calculateSquare(value % TEN) % TEN;
-    }
-
-    private double calculateSquare(double value) {
+    public double calculateSquare(double value) {
         return Math.pow(value, TWO);
     }
 }

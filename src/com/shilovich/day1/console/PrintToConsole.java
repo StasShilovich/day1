@@ -4,31 +4,31 @@ import com.shilovich.day1.entity.Point;
 
 public class PrintToConsole {
     public void printMessage(String message) {
-        System.out.printf(message);
+        System.out.printf(message+"%n");
     }
 
     public void printValue(double value) {
-        System.out.printf("%.2f", value);
+        System.out.printf("%.2f%n", value);
     }
 
     public void printPoint(Point point, double distance) {
-        System.out.printf(point + " Distance: " + distance);
+        System.out.printf(point + " Distance: %.2f%n" + distance);
     }
 
     public void printInscribedSquare(double square) {
-        System.out.printf("Inscribed Square: %.2f", square);
+        System.out.printf("Inscribed Square: %.2f%n", square);
     }
 
     public void printRatio(double ratio) {
-        System.out.printf(" Ratio: %.2f", ratio);
+        System.out.printf(" Ratio: %.2f%n", ratio);
     }
 
     public void printArea(double area) {
-        System.out.printf(" Area: %.2f", area);
+        System.out.printf(" Area: %.2f%n", area);
     }
 
     public void printCircumference(double circumference) {
-        System.out.printf(" Circumference: %.2f", circumference);
+        System.out.printf(" Circumference: %.2f%n", circumference);
     }
 
     public void printTime(int seconds, int minutes, int hours) {
@@ -36,7 +36,7 @@ public class PrintToConsole {
     }
 
     public void printQuantity(int quantity) {
-        System.out.printf("Days in a month: %d", quantity);
+        System.out.printf("Days in a month: %d%n", quantity);
     }
 
     public void printTableHeader() {
