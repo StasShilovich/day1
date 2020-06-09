@@ -13,17 +13,13 @@ public class FunctionService {
     private static final EnteredDataValidation dataValidation = new EnteredDataValidation();
     private static final PrintToConsole printToConsole = new PrintToConsole();
 
-    public double runTaskOne(double value) throws IncorrectDataException{
+    public double runTaskOne(double value) throws IncorrectDataException {
         double result = 0;
-        try {
-            if (!dataValidation.validateInteger(value) || !dataValidation.validateNotNull(value)) {
-                throw new IncorrectDataException("Incorrect data. Enter an integer");
-            }
-            result = calculateSquare(value % TEN) % TEN;
-            printToConsole.printValue(result);
-        } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
+        if (!dataValidation.validateInteger(value) || !dataValidation.validateNotNull(value)) {
+            throw new IncorrectDataException("Incorrect data. Enter an integer");
         }
+        result = calculateSquare(value % TEN) % TEN;
+        printToConsole.printValue(result);
         return result;
     }
 

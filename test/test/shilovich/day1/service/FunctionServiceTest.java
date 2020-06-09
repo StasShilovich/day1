@@ -93,7 +93,7 @@ public class FunctionServiceTest {
     }
 
     @Test(priority = 11, expectedExceptions = IncorrectDataException.class,
-            expectedExceptionsMessageRegExp = "Value is null")
+            expectedExceptionsMessageRegExp = "Incorrect data. Enter an integer")
     public void testTaskOneException() throws IncorrectDataException {
         functionService.runTaskOne(2.4);
     }
