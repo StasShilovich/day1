@@ -1,6 +1,5 @@
 package test.shilovich.day1.service;
 
-import com.shilovich.day1.console.PrintToConsole;
 import com.shilovich.day1.exception.IncorrectDataException;
 import com.shilovich.day1.service.ArithmeticService;
 import org.testng.annotations.BeforeClass;
@@ -16,12 +15,10 @@ import static org.testng.Assert.fail;
 public class ArithmeticServiceTest {
 
     ArithmeticService arithmeticService;
-    PrintToConsole printToConsole;
 
     @BeforeClass
     public void setUp() {
         arithmeticService = new ArithmeticService();
-        printToConsole = new PrintToConsole();
     }
 
     @Test(priority = 1)
@@ -47,7 +44,6 @@ public class ArithmeticServiceTest {
             expected.put(2D, -2.185039863261519D);
             assertEquals(actual, expected);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }
@@ -61,7 +57,6 @@ public class ArithmeticServiceTest {
             expected.put(2D, 2D);
             assertNotEquals(actual, expected);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }

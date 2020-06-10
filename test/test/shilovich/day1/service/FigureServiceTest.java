@@ -1,6 +1,5 @@
 package test.shilovich.day1.service;
 
-import com.shilovich.day1.console.PrintToConsole;
 import com.shilovich.day1.exception.IncorrectDataException;
 import com.shilovich.day1.service.FigureService;
 import org.testng.annotations.BeforeClass;
@@ -16,12 +15,10 @@ import static org.testng.Assert.fail;
 public class FigureServiceTest {
 
     FigureService figureService;
-    PrintToConsole printToConsole;
 
     @BeforeClass
     public void setUp() {
         figureService = new FigureService();
-        printToConsole = new PrintToConsole();
     }
 
     @Test(priority = 1)
@@ -33,7 +30,6 @@ public class FigureServiceTest {
             expected.add(2D);
             assertEquals(actual, expected);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }
@@ -47,7 +43,6 @@ public class FigureServiceTest {
             expected.add(3D);
             assertNotEquals(actual, expected);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }
@@ -67,7 +62,6 @@ public class FigureServiceTest {
             expected.add(12.566370614359172D);
             assertEquals(actual, expected);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }
@@ -81,7 +75,6 @@ public class FigureServiceTest {
             expected.add(3D);
             assertNotEquals(actual, expected);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }

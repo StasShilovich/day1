@@ -1,23 +1,20 @@
 package com.shilovich.day1.service;
 
-import com.shilovich.day1.console.PrintToConsole;
-import com.shilovich.day1.entity.Month;
+import com.shilovich.day1.entity.CustomTime;
+import com.shilovich.day1.entity.MonthNotLeap;
 import com.shilovich.day1.exception.IncorrectDataException;
 import com.shilovich.day1.validator.EnteredDataValidator;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-import static com.shilovich.day1.entity.Month.FEBRUARY;
+import static com.shilovich.day1.entity.MonthNotLeap.FEBRUARY;
 
 public class TimeService {
 
     private static final int FOUR = 4;
-    private static final int SIXTY = 60;
     private static final int DAYS_IN_LEAP_FEBRUARY = 29;
 
     private static final EnteredDataValidator dataValidation = new EnteredDataValidator();
-    private static final PrintToConsole printToConsole = new PrintToConsole();
 
     public int runTaskTwo(int yearInt, int monthInt) throws IncorrectDataException {
         if (!dataValidation.validateNotNull(yearInt) || !dataValidation.validateNotNull(monthInt)) {
@@ -26,32 +23,25 @@ public class TimeService {
         int quantity = 0;
         if (checkLeapYear(yearInt) && monthInt == FEBRUARY.getMonthNumber()) {
             quantity = DAYS_IN_LEAP_FEBRUARY;
-            printToConsole.printQuantity(quantity);
             return quantity;
         }
-        for (Month month : Month.values()) {
+        for (MonthNotLeap month : MonthNotLeap.values()) {
             if (month.getMonthNumber() == monthInt) {
                 quantity = month.getDaysInMonth();
             }
         }
-        printToConsole.printQuantity(quantity);
         return quantity;
     }
 
-    public List<Integer> runTaskSix(int seconds) throws IncorrectDataException {
+    public CustomTime runTaskSix(int seconds) throws IncorrectDataException {
         if (!dataValidation.validateNotNull(seconds) || !dataValidation.validateValueAboveZero(seconds)) {
             throw new IncorrectDataException("Incorrect data. Enter not null value");
         }
-        int minutes = Math.floorDiv(seconds, SIXTY);
-        int hoursFinal = Math.floorDiv(minutes, SIXTY);
-        int minutesFinal = minutes % SIXTY;
-        int secondsFinal = seconds % SIXTY;
-        printToConsole.printTime(secondsFinal, minutesFinal, hoursFinal);
-        List<Integer> timeList = new ArrayList<>();
-        timeList.add(hoursFinal);
-        timeList.add(minutesFinal);
-        timeList.add(secondsFinal);
-        return timeList;
+        long hours = TimeUnit.SECONDS.toHours(seconds);
+        long minute = TimeUnit.SECONDS.toMinutes(seconds-hours*3600);
+        long second = TimeUnit.SECONDS.toHours(seconds);
+        CustomTime customTime = new CustomTime(second, minute, hours);
+        return customTime;
     }
 
     public boolean checkLeapYear(int year) {

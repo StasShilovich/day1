@@ -1,6 +1,5 @@
 package test.shilovich.day1.service;
 
-import com.shilovich.day1.console.PrintToConsole;
 import com.shilovich.day1.entity.Point;
 import com.shilovich.day1.exception.IncorrectDataException;
 import com.shilovich.day1.service.FunctionService;
@@ -18,13 +17,11 @@ import static org.testng.Assert.fail;
 public class FunctionServiceTest {
 
     FunctionService functionService;
-    PrintToConsole printToConsole;
     Point pointA;
 
     @BeforeClass
     public void setUp() {
         functionService = new FunctionService();
-        printToConsole = new PrintToConsole();
         pointA = new Point();
         pointA.setAxisX(12);
         pointA.setAxisY(5);
@@ -89,7 +86,6 @@ public class FunctionServiceTest {
             double expected = 9D;
             assertEquals(actual, expected);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }
@@ -101,7 +97,6 @@ public class FunctionServiceTest {
             double expected = 7D;
             assertNotEquals(actual, expected);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }
@@ -118,7 +113,6 @@ public class FunctionServiceTest {
             boolean condition = functionService.runTaskFour(2, 4, 3, 5);
             assertTrue(condition);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }
@@ -129,7 +123,6 @@ public class FunctionServiceTest {
             boolean condition = functionService.runTaskFour(1, 3, 5, 7);
             assertFalse(condition);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }
@@ -146,7 +139,6 @@ public class FunctionServiceTest {
             boolean condition = functionService.runTaskFive(6);
             assertTrue(condition);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }
@@ -157,7 +149,6 @@ public class FunctionServiceTest {
             boolean condition = functionService.runTaskFive(7);
             assertFalse(condition);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }
@@ -178,7 +169,6 @@ public class FunctionServiceTest {
             Point expected = pointA;
             assertSame(actual, expected);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }
@@ -193,7 +183,6 @@ public class FunctionServiceTest {
             Point expected = pointA;
             assertNotSame(actual, expected);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }

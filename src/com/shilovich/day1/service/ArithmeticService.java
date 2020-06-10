@@ -1,6 +1,5 @@
 package com.shilovich.day1.service;
 
-import com.shilovich.day1.console.PrintToConsole;
 import com.shilovich.day1.exception.IncorrectDataException;
 import com.shilovich.day1.validator.EnteredDataValidator;
 
@@ -12,7 +11,6 @@ public class ArithmeticService {
     private static final double THREE = 3;
 
     private static final EnteredDataValidator dataValidation = new EnteredDataValidator();
-    private static final PrintToConsole printToConsole = new PrintToConsole();
 
     public double runTaskEight(int number) {
         double result = 0;
@@ -21,7 +19,6 @@ public class ArithmeticService {
         } else {
             result = calculateSecond(number);
         }
-        printToConsole.printValue(result);
         return result;
     }
 
@@ -32,12 +29,9 @@ public class ArithmeticService {
                 !dataValidation.validateLineSegment(startPoint, endPoint)) {
             throw new IncorrectDataException("Incorrect data. Enter the correct area");
         }
-        printToConsole.printTableHeader();
         Map<Double, Double> function = new HashMap<>();
         for (double i = startPoint; i <= endPoint; i += step) {
             double value = Math.tan(i);
-            printToConsole.printTableValue(i);
-            printToConsole.printTableFunction(value);
             function.put(i, value);
         }
         return function;

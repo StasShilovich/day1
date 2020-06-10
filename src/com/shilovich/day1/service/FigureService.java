@@ -1,6 +1,5 @@
 package com.shilovich.day1.service;
 
-import com.shilovich.day1.console.PrintToConsole;
 import com.shilovich.day1.exception.IncorrectDataException;
 import com.shilovich.day1.validator.EnteredDataValidator;
 
@@ -11,7 +10,6 @@ public class FigureService {
     private static final double TWO = 2;
 
     private static final EnteredDataValidator dataValidation = new EnteredDataValidator();
-    private static final PrintToConsole printToConsole = new PrintToConsole();
 
     public List<Double> runTaskThree(double square) throws IncorrectDataException {
         if (!dataValidation.validateValueAboveZero(square) || !dataValidation.validateNotNull(square)) {
@@ -21,8 +19,6 @@ public class FigureService {
         double sideIn = sideOut / Math.sqrt(TWO);
         double inscribedSquare = Math.pow(sideIn, TWO);
         double ratio = square / inscribedSquare;
-        printToConsole.printInscribedSquare(inscribedSquare);
-        printToConsole.printRatio(ratio);
         List<Double> results = new ArrayList<>();
         results.add(inscribedSquare);
         results.add(ratio);
@@ -35,8 +31,6 @@ public class FigureService {
         }
         double circumference = TWO * Math.PI * radius;
         double area = Math.PI * Math.pow(radius, 2d);
-        printToConsole.printCircumference(circumference);
-        printToConsole.printArea(area);
         List<Double> results = new ArrayList<>();
         results.add(circumference);
         results.add(area);

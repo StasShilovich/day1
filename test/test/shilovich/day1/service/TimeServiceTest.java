@@ -1,6 +1,6 @@
 package test.shilovich.day1.service;
 
-import com.shilovich.day1.console.PrintToConsole;
+import com.shilovich.day1.entity.CustomTime;
 import com.shilovich.day1.exception.IncorrectDataException;
 import com.shilovich.day1.service.TimeService;
 import org.testng.annotations.BeforeClass;
@@ -18,25 +18,19 @@ import static org.testng.Assert.fail;
 public class TimeServiceTest {
 
     TimeService timeService;
-    PrintToConsole printToConsole;
 
     @BeforeClass
     public void setUp() {
         timeService = new TimeService();
-        printToConsole = new PrintToConsole();
     }
 
     @Test(priority = 1)
     public void testTaskSixPositive() {
         try {
-            List<Integer> actual = timeService.runTaskSix(123123);
-            List<Integer> expected = new ArrayList<>();
-            expected.add(34);
-            expected.add(12);
-            expected.add(3);
+            CustomTime actual = timeService.runTaskSix(123123);
+            CustomTime expected = new CustomTime(34,12,3);
             assertEquals(actual, expected);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }
@@ -44,14 +38,10 @@ public class TimeServiceTest {
     @Test(priority = 2, dependsOnMethods = "testTaskSixPositive")
     public void testTaskSixNegative() {
         try {
-            List<Integer> actual = timeService.runTaskSix(123123);
-            List<Integer> expected = new ArrayList<>();
-            expected.add(3);
-            expected.add(3);
-            expected.add(3);
+            CustomTime actual = timeService.runTaskSix(123123);
+            CustomTime expected = new CustomTime(3,1,3);
             assertNotEquals(actual, expected);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }
@@ -69,7 +59,6 @@ public class TimeServiceTest {
             int expected = 29;
             assertEquals(actual, expected);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }
@@ -81,7 +70,6 @@ public class TimeServiceTest {
             int expected = 28;
             assertNotEquals(actual, expected);
         } catch (IncorrectDataException e) {
-            printToConsole.printMessage(e.getMessage());
             fail();
         }
     }
