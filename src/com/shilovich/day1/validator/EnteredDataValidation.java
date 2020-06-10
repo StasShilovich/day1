@@ -3,6 +3,7 @@ package com.shilovich.day1.validator;
 import com.shilovich.day1.entity.Point;
 
 public class EnteredDataValidation {
+
     private static final int HUNDRED = 100;
 
     public boolean validateInteger(double value) {

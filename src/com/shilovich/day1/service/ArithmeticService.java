@@ -4,6 +4,9 @@ import com.shilovich.day1.console.PrintToConsole;
 import com.shilovich.day1.exception.IncorrectDataException;
 import com.shilovich.day1.validator.EnteredDataValidation;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ArithmeticService {
 
     private static final double THREE = 3;
@@ -11,47 +14,40 @@ public class ArithmeticService {
     private static final EnteredDataValidation dataValidation = new EnteredDataValidation();
     private static final PrintToConsole printToConsole = new PrintToConsole();
 
-    public double runTaskEight(int number) throws IncorrectDataException{
+    public double runTaskEight(int number) {
         double result = 0;
-        try {
-            if (number >= THREE) {
-                result = calculateFirst(number);
-            } else {
-                result = calculateSecond(number);
-            }
-            printToConsole.printValue(result);
-        } catch (Exception e) {
-            printToConsole.printMessage(e.getMessage());
+        if (number >= THREE) {
+            result = calculateFirst(number);
+        } else {
+            result = calculateSecond(number);
         }
+        printToConsole.printValue(result);
         return result;
     }
 
-    public double runTaskTen(double startPoint, double endPoint, double step) throws IncorrectDataException{
-        double result = 0;
-        try {
-            if (!dataValidation.validateNotNull(startPoint) ||
-                    !dataValidation.validateNotNull(endPoint) ||
-                    !dataValidation.validateNotNull(step) ||
-                    !dataValidation.validateEndPointMoreThanStartPoint(startPoint, endPoint)) {
-                throw new IncorrectDataException("Incorrect data. Enter the correct area");
-            }
-            printToConsole.printTableHeader();
-            for (double i = startPoint; i <= endPoint; i += step) {
-                double value = Math.tan(i);
-                printToConsole.printTableValue(i);
-                printToConsole.printTableFunction(value);
-            }
-        } catch (Exception e) {
-            printToConsole.printMessage(e.getMessage());
+    public Map<Double, Double> runTaskTen(double startPoint, double endPoint, double step) throws IncorrectDataException {
+        if (!dataValidation.validateNotNull(startPoint) ||
+                !dataValidation.validateNotNull(endPoint) ||
+                !dataValidation.validateNotNull(step) ||
+                !dataValidation.validateEndPointMoreThanStartPoint(startPoint, endPoint)) {
+            throw new IncorrectDataException("Incorrect data. Enter the correct area");
         }
-        return result;
+        printToConsole.printTableHeader();
+        Map<Double, Double> function = new HashMap<>();
+        for (double i = startPoint; i <= endPoint; i += step) {
+            double value = Math.tan(i);
+            printToConsole.printTableValue(i);
+            printToConsole.printTableFunction(value);
+            function.put(i, value);
+        }
+        return function;
     }
 
-    private double calculateFirst(int number) {
+    public double calculateFirst(int number) {
         return -Math.pow(number, 2) + 3 * number + 9;
     }
 
-    private double calculateSecond(int number) {
+    public double calculateSecond(int number) {
         return 1 / (Math.pow(number, 3) - 6);
     }
 }
