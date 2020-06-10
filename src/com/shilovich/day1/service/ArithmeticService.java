@@ -2,7 +2,7 @@ package com.shilovich.day1.service;
 
 import com.shilovich.day1.console.PrintToConsole;
 import com.shilovich.day1.exception.IncorrectDataException;
-import com.shilovich.day1.validator.EnteredDataValidation;
+import com.shilovich.day1.validator.EnteredDataValidator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +11,7 @@ public class ArithmeticService {
 
     private static final double THREE = 3;
 
-    private static final EnteredDataValidation dataValidation = new EnteredDataValidation();
+    private static final EnteredDataValidator dataValidation = new EnteredDataValidator();
     private static final PrintToConsole printToConsole = new PrintToConsole();
 
     public double runTaskEight(int number) {
@@ -29,7 +29,7 @@ public class ArithmeticService {
         if (!dataValidation.validateNotNull(startPoint) ||
                 !dataValidation.validateNotNull(endPoint) ||
                 !dataValidation.validateNotNull(step) ||
-                !dataValidation.validateEndPointMoreThanStartPoint(startPoint, endPoint)) {
+                !dataValidation.validateLineSegment(startPoint, endPoint)) {
             throw new IncorrectDataException("Incorrect data. Enter the correct area");
         }
         printToConsole.printTableHeader();

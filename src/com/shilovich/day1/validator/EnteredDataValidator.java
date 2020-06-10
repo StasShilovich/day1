@@ -2,7 +2,7 @@ package com.shilovich.day1.validator;
 
 import com.shilovich.day1.entity.Point;
 
-public class EnteredDataValidation {
+public class EnteredDataValidator {
 
     private static final int HUNDRED = 100;
 
@@ -38,7 +38,7 @@ public class EnteredDataValidation {
         return result;
     }
 
-    public boolean validateEndPointMoreThanStartPoint(double startPoint, double endPoint) {
+    public boolean validateLineSegment(double startPoint, double endPoint) {
         boolean result = false;
         if (startPoint < endPoint) {
             result = true;

@@ -2,7 +2,7 @@ package com.shilovich.day1.service;
 
 import com.shilovich.day1.console.PrintToConsole;
 import com.shilovich.day1.exception.IncorrectDataException;
-import com.shilovich.day1.validator.EnteredDataValidation;
+import com.shilovich.day1.validator.EnteredDataValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 public class FigureService {
     private static final double TWO = 2;
 
-    private static final EnteredDataValidation dataValidation = new EnteredDataValidation();
+    private static final EnteredDataValidator dataValidation = new EnteredDataValidator();
     private static final PrintToConsole printToConsole = new PrintToConsole();
 
     public List<Double> runTaskThree(double square) throws IncorrectDataException {
