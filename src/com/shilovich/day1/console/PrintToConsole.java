@@ -12,7 +12,7 @@ public class PrintToConsole {
     }
 
     public void printPoint(Point point, double distance) {
-        System.out.printf(point + " Distance: %.2f%n" + distance);
+        System.out.printf(point + " Distance: %.2f%n", distance);
     }
 
     public void printInscribedSquare(double square) {

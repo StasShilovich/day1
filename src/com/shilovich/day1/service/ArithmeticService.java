@@ -11,7 +11,7 @@ public class ArithmeticService {
     private static final EnteredDataValidation dataValidation = new EnteredDataValidation();
     private static final PrintToConsole printToConsole = new PrintToConsole();
 
-    public double runTaskEight(int number) {
+    public double runTaskEight(int number) throws IncorrectDataException{
         double result = 0;
         try {
             if (number >= THREE) {
@@ -26,7 +26,7 @@ public class ArithmeticService {
         return result;
     }
 
-    public double runTaskTen(double startPoint, double endPoint, double step) {
+    public double runTaskTen(double startPoint, double endPoint, double step) throws IncorrectDataException{
         double result = 0;
         try {
             if (!dataValidation.validateNotNull(startPoint) ||
