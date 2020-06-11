@@ -6,9 +6,6 @@ import com.shilovich.day1.service.TimeService;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertNotEquals;
@@ -28,7 +25,7 @@ public class TimeServiceTest {
     public void testTaskSixPositive() {
         try {
             CustomTime actual = timeService.runTaskSix(123123);
-            CustomTime expected = new CustomTime(34,12,3);
+            CustomTime expected = new CustomTime(3, 12, 34);
             assertEquals(actual, expected);
         } catch (IncorrectDataException e) {
             fail();
@@ -39,7 +36,7 @@ public class TimeServiceTest {
     public void testTaskSixNegative() {
         try {
             CustomTime actual = timeService.runTaskSix(123123);
-            CustomTime expected = new CustomTime(3,1,3);
+            CustomTime expected = new CustomTime(3, 1, 3);
             assertNotEquals(actual, expected);
         } catch (IncorrectDataException e) {
             fail();

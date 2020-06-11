@@ -13,6 +13,8 @@ public class TimeService {
 
     private static final int FOUR = 4;
     private static final int DAYS_IN_LEAP_FEBRUARY = 29;
+    private static final int SECONDS_IN_HOUR = 3600;
+    private static final int SECONDS_IN_MINUTE = 60;
 
     private static final EnteredDataValidator dataValidation = new EnteredDataValidator();
 
@@ -38,8 +40,9 @@ public class TimeService {
             throw new IncorrectDataException("Incorrect data. Enter not null value");
         }
         long hours = TimeUnit.SECONDS.toHours(seconds);
-        long minute = TimeUnit.SECONDS.toMinutes(seconds-hours*3600);
-        long second = TimeUnit.SECONDS.toHours(seconds);
+        long remainderForMinutes = seconds - hours * SECONDS_IN_HOUR;
+        long minute = TimeUnit.SECONDS.toMinutes(remainderForMinutes);
+        long second = remainderForMinutes - minute * SECONDS_IN_MINUTE;
         CustomTime customTime = new CustomTime(second, minute, hours);
         return customTime;
     }

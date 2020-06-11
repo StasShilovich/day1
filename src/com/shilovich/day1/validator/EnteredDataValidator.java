@@ -45,4 +45,14 @@ public class EnteredDataValidator {
         }
         return result;
     }
+
+    public boolean validateArrayForZeroValues(int... array) {
+        boolean result = true;
+        for (int values : array) {
+            if (values == 0) {
+                result = false;
+            }
+        }
+        return result;
+    }
 }

@@ -20,12 +20,9 @@ public class FunctionService {
     }
 
     public boolean runTaskFour(int... numbers) throws IncorrectDataException {
-//        if (!dataValidation.validateNotNull(firstNumber) ||
-//                !dataValidation.validateNotNull(secondNumber) ||
-//                !dataValidation.validateNotNull(thirdNumber) ||
-//                !dataValidation.validateNotNull(fourthNumber)) {
-//            throw new IncorrectDataException("Incorrect data. Enter not null value");
-//        }
+        if (!dataValidation.validateArrayForZeroValues(numbers)) {
+            throw new IncorrectDataException("Incorrect data. Enter not null value");
+        }
         int flag = 0;
         for (int number : numbers) {
             if (isEvenNumber(number)) {
@@ -54,7 +51,6 @@ public class FunctionService {
         Point point = distancePointA > distancePointB ? pointA : pointB;
         return point;
     }
-
 
     public double calculateHypotenuse(double axisX, double axisY) {
         return Math.hypot(axisX, axisY);

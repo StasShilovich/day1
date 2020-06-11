@@ -83,4 +83,15 @@ public class EnteredDataValidatorTest {
         assertFalse(condition);
     }
 
+    @Test(priority = 11)
+    public void testArrayForZeroValuesValidatorPositive() {
+        boolean condition = enteredDataValidator.validateArrayForZeroValues(1, 1, 2, 3, 4, 5);
+        assertTrue(condition);
+    }
+
+    @Test(priority = 12, dependsOnMethods = "testArrayForZeroValuesValidatorPositive")
+    public void testArrayForZeroValuesValidatorNegative() {
+        boolean condition = enteredDataValidator.validateArrayForZeroValues(1, 1, 2, 3, 0, 5);
+        assertFalse(condition);
+    }
 }

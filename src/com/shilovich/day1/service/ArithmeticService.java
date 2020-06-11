@@ -13,7 +13,7 @@ public class ArithmeticService {
     private static final EnteredDataValidator dataValidation = new EnteredDataValidator();
 
     public double runTaskEight(int number) {
-        double result = 0;
+        double result;
         if (number >= THREE) {
             result = calculateFirst(number);
         } else {
