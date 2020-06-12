@@ -10,8 +10,6 @@ public class ArithmeticService {
 
     private static final double THREE = 3;
 
-    private static final EnteredDataValidator dataValidation = new EnteredDataValidator();
-
     public double runTaskEight(int number) {
         double result;
         if (number >= THREE) {
@@ -23,6 +21,7 @@ public class ArithmeticService {
     }
 
     public Map<Double, Double> runTaskTen(double startPoint, double endPoint, double step) throws IncorrectDataException {
+        EnteredDataValidator dataValidation = new EnteredDataValidator();
         if (!dataValidation.validateNotNull(startPoint) ||
                 !dataValidation.validateNotNull(endPoint) ||
                 !dataValidation.validateNotNull(step) ||

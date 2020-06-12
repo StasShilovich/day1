@@ -9,9 +9,8 @@ public class FunctionService {
     private static final double TWO = 2;
     private static final int TEN = 10;
 
-    private static final EnteredDataValidator dataValidation = new EnteredDataValidator();
-
     public double runTaskOne(double value) throws IncorrectDataException {
+        EnteredDataValidator dataValidation = new EnteredDataValidator();
         if (!dataValidation.validateInteger(value) || !dataValidation.validateNotNull(value)) {
             throw new IncorrectDataException("Incorrect data. Enter an integer");
         }
@@ -20,6 +19,7 @@ public class FunctionService {
     }
 
     public boolean runTaskFour(int... numbers) throws IncorrectDataException {
+        EnteredDataValidator dataValidation = new EnteredDataValidator();
         if (!dataValidation.validateArrayForZeroValues(numbers)) {
             throw new IncorrectDataException("Incorrect data. Enter not null value");
         }
@@ -34,6 +34,7 @@ public class FunctionService {
     }
 
     public boolean runTaskFive(int number) throws IncorrectDataException {
+        EnteredDataValidator dataValidation = new EnteredDataValidator();
         if (!dataValidation.validateNotNull(number)) {
             throw new IncorrectDataException("Incorrect data. Enter not null value");
         }
@@ -42,6 +43,7 @@ public class FunctionService {
     }
 
     public Point runTaskSeven(Point pointA, Point pointB) throws IncorrectDataException {
+        EnteredDataValidator dataValidation = new EnteredDataValidator();
         if (!dataValidation.validatePointRange(pointA) ||
                 !dataValidation.validatePointRange(pointB)) {
             throw new IncorrectDataException("Incorrect data. Enter an integer");

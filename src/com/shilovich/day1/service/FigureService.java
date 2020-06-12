@@ -9,9 +9,8 @@ import java.util.List;
 public class FigureService {
     private static final double TWO = 2;
 
-    private static final EnteredDataValidator dataValidation = new EnteredDataValidator();
-
     public List<Double> runTaskThree(double square) throws IncorrectDataException {
+        EnteredDataValidator dataValidation = new EnteredDataValidator();
         if (!dataValidation.validateValueAboveZero(square) || !dataValidation.validateNotNull(square)) {
             throw new IncorrectDataException("Incorrect data. Enter the correct area");
         }
@@ -26,6 +25,7 @@ public class FigureService {
     }
 
     public List<Double> runTaskNine(double radius) throws IncorrectDataException {
+        EnteredDataValidator dataValidation = new EnteredDataValidator();
         if (!dataValidation.validateValueAboveZero(radius) || !dataValidation.validateNotNull(radius)) {
             throw new IncorrectDataException("Incorrect data. Enter the correct radius");
         }

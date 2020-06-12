@@ -16,9 +16,8 @@ public class TimeService {
     private static final int SECONDS_IN_HOUR = 3600;
     private static final int SECONDS_IN_MINUTE = 60;
 
-    private static final EnteredDataValidator dataValidation = new EnteredDataValidator();
-
     public int runTaskTwo(int yearInt, int monthInt) throws IncorrectDataException {
+        EnteredDataValidator dataValidation = new EnteredDataValidator();
         if (!dataValidation.validateNotNull(yearInt) || !dataValidation.validateNotNull(monthInt)) {
             throw new IncorrectDataException("Incorrect data. Enter not null value");
         }
@@ -36,6 +35,7 @@ public class TimeService {
     }
 
     public CustomTime runTaskSix(int seconds) throws IncorrectDataException {
+        EnteredDataValidator dataValidation = new EnteredDataValidator();
         if (!dataValidation.validateNotNull(seconds) || !dataValidation.validateValueAboveZero(seconds)) {
             throw new IncorrectDataException("Incorrect data. Enter not null value");
         }
